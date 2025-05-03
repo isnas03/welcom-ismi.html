@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Epic Web Design</title>
+  <title>WELCOME TO ISNAS'S WORLD</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -207,7 +207,7 @@
   </nav>
 
   <header>
-    <h1>Epic Web Design</h1>
+    <h1>WELCOME TO ISNAS'S WORLD</h1>
     <p>We build digital dreams into beautiful realities.</p>
   </header>
 
