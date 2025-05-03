@@ -1,264 +1,282 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WELCOME TO ISNAS'S WORLD</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <title>ISNAS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
+      font-family: 'Outfit', sans-serif;
     }
 
     body {
-      font-family: 'Raleway', sans-serif;
-      color: #333;
-      background-color: #f8f9fa;
-      scroll-behavior: smooth;
+      background: radial-gradient(circle at top left, #1f1c2c, #928dab);
+      color: white;
+      overflow-x: hidden;
     }
 
     header {
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
-      height: 100vh;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    }
-
-    nav {
       position: fixed;
-      top: 0;
+      top: 0; left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px 0;
-      z-index: 1000;
-    }
-
-    nav ul {
+      background: rgba(0,0,0,0.5);
+      padding: 1rem;
       display: flex;
-      justify-content: center;
-      list-style: none;
-    }
-
-    nav ul li {
-      margin: 0 20px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #ffd700;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
     }
 
     header h1 {
-      font-size: 4rem;
-      animation: fadeIn 2s ease-in-out;
+      font-size: 1.4rem;
     }
 
-    header p {
-      font-size: 1.5rem;
-      margin-top: 20px;
-      animation: fadeIn 3s ease-in-out;
+    .hero {
+      padding-top: 80px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
+    .hero h2 {
+      font-size: 2rem;
+      animation: typing 4s steps(20) infinite, blink 0.5s step-end infinite alternate;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid white;
+      width: fit-content;
       margin: auto;
     }
 
-    .about, .services, .contact {
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .blob-bg {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, #8e44ad, #3498db);
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 0;
+      animation: moveBlob 12s infinite linear alternate;
+    }
+
+    @keyframes moveBlob {
+      0% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-45%) translateY(30px); }
+      100% { transform: translateX(-55%) translateY(-20px); }
+    }
+
+    .section {
+      padding: 4rem 1rem;
       text-align: center;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      background: rgba(255,255,255,0.08);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transform: perspective(500px) rotateY(0deg);
+      transition: transform 0.6s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-10px);
+      transform: perspective(500px) rotateY(10deg);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.6);
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+    .tabs {
+      margin-top: 3rem;
     }
 
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .contact form {
-      max-width: 600px;
-      margin: auto;
+    .tab-buttons {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      justify-content: center;
+      gap: 1rem;
     }
 
-    .contact input, .contact textarea {
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .contact button {
-      background-color: #007BFF;
-      color: white;
-      padding: 15px;
+    .tab-buttons button {
+      padding: 0.5rem 1rem;
       border: none;
-      border-radius: 8px;
+      background: white;
+      color: #222;
+      border-radius: 1rem;
       cursor: pointer;
-      transition: background 0.3s;
     }
 
-    .contact button:hover {
-      background-color: #0056b3;
-    }
-
-    footer {
-      background: #222;
-      color: #ccc;
-      text-align: center;
-      padding: 30px 0;
-    }
-
-    .modal-checkbox {
+    .tab-content {
+      margin-top: 2rem;
       display: none;
     }
 
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
+    .tab-content.active {
+      display: block;
+    }
+
+    .form {
+      max-width: 400px;
+      margin: auto;
+      background: rgba(255,255,255,0.07);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
       width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      text-align: center;
-      max-width: 500px;
-    }
-
-    .modal-checkbox:checked + .modal {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-close {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #333;
+      padding: 1rem 0.5rem;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid white;
       color: white;
-      border-radius: 8px;
-      cursor: pointer;
+      font-size: 1rem;
     }
 
+    .form-group label {
+      position: absolute;
+      top: 1rem;
+      left: 0.5rem;
+      color: #aaa;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group textarea:focus + label,
+    .form-group textarea:not(:placeholder-shown) + label {
+      top: -1rem;
+      font-size: 0.8rem;
+      color: #f0f0f0;
+    }
+
+    .form button {
+      padding: 0.7rem 1.5rem;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .form button:hover {
+      background: #ddd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <div class="blob-bg"></div>
 
   <header>
-    <h1>WELCOME TO ISNAS'S WORLD</h1>
-    <p>We build digital dreams into beautiful realities.</p>
+    <h1>ISNAS❤️MINFA</h1>
+    <nav>
+      <a href="#features" style="margin-right: 1rem;">Features</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>We are a passionate team of designers and developers crafting top-notch websites for modern brands.</p>
+  <section class="hero">
+    <h2>WELCOME TO ISNAS'S WORLD...</h2>
   </section>
 
-  <section id="services" class="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="card">🖥️ Web Design</div>
-      <div class="card">📱 App Development</div>
-      <div class="card">💼 SEO & Marketing</div>
-      <div class="card">🎨 Branding</div>
+  <section id="features" class="section">
+    <h2>Unique Features</h2>
+    <div class="cards">
+      <div class="card">🌈  ISMI UI + MI</div>
+      <div class="card">⚡ Typewriter Text</div>
+      <div class="card">📱 100% Mobile Optimized</div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button onclick="showTab(0)">Tech</button>
+        <button onclick="showTab(1)">Design</button>
+      </div>
+      <div class="tab-content active">We use the latest HTML5, CSS3, and JS for blazing speed.</div>
+      <div class="tab-content">Our design philosophy blends minimalism with magic.</div>
     </div>
   </section>
 
-  <section id="gallery" class="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="https://source.unsplash.com/400x300/?website,design" alt="">
-      <img src="https://source.unsplash.com/400x300/?coding,html" alt="">
-      <img src="https://source.unsplash.com/400x300/?technology,web" alt="">
-      <img src="https://source.unsplash.com/400x300/?developer,workspace" alt="">
+  <section id="contact" class="section">
+    <h2>CONTACT US</h2>
+<div class="tabs">
+      <div class="tab-buttons">
+        <button onclick="showTab(0)">076-1444-674</button>
+       
+      </div>
+      <div class="tab-content active">We use the latest HTML5, CSS3, and JS for blazing speed.</div>
+      <div class="tab-content">Our design philosophy blends minimalism with magic.</div>
     </div>
-  </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
+    <form class="form">
+      <div class="form-group">
+        <input type="text" placeholder=" " required>
+        <label>Your Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder=" " required>
+        <label>Email</label>
+      </div>
+      <div class="form-group">
+        <textarea placeholder=" " rows="3" required></textarea>
+        <label>Your Message</label>
+      </div>
+      <button>Send Message</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 Epic Web Design. All rights reserved.</p>
+    <p>&copy; 2025 UniquePhoneX. Made with ❤️ for mobile</p>
   </footer>
 
-  <!-- Modal (CSS Only) -->
-  <input type="checkbox" id="modal-toggle" class="modal-checkbox">
-  <label for="modal-toggle" class="modal">
-    <div class="modal-content">
-      <h2>Welcome to Epic!</h2>
-      <p>Thanks for visiting our site. Enjoy the design!</p>
-      <label for="modal-toggle" class="modal-close">Close</label>
-    </div>
-  </label>
+  <script>
+    function showTab(index) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+      });
+    }
+  </script>
 
 </body>
 </html>
